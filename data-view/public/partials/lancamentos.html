@@ -1,0 +1,51 @@
+<div ng-controller="lancamentosController" ng-init="readLancamentosJson()">
+  <md-toolbar class="md-whiteframe-1dp">
+    <div class="md-toolbar-tools">
+      <div class="md-title">Extrato de lançamentos</div>
+    </div>
+  </md-toolbar>
+      
+  <md-content layout="column" flex>
+    <md-card>
+      <md-toolbar class="md-table-toolbar md-default">
+        <div class="md-toolbar-tools">
+          <span>Lançamentos</span>
+          <div flex></div>
+
+          <md-switch ng-model="datasourceDinamico" aria-label="Switch 6" ng-change="onChange(datasourceDinamico)">
+            Fonte de dados dinâmica
+          </md-switch>
+        </div>
+      </md-toolbar>
+
+      <md-table-container>
+        <table md-table md-progress="promise">
+          <thead md-head>
+            <tr md-row>
+              <th md-column><span>Data do lançamento</span></th>
+              <th md-column><span>Descrição</span></th>
+              <th md-column><span>Número</span></th>
+              <th md-column><span>Situação</span></th>
+              <th md-column><span>Data de confirmação</span></th>
+              <th md-column><span>Dados bancários</span></th>
+              <th md-column><span>Valor final</span></th>
+            </tr>
+          </thead>
+
+          <tbody md-body>
+            <tr md-row ng-repeat="lancamento in lancamentos">
+              <td md-cell>{{lancamento.dataLancamento}}</td>
+              <td md-cell>{{lancamento.descricao}}</td>
+              <td md-cell>{{lancamento.numero}}</td>
+              <td md-cell>{{lancamento.situacao}}</td>
+              <td md-cell>{{lancamento.dataConfirmacao}}</td>
+              <td md-cell>{{lancamento.dadosBancarios}}</td>
+              <td md-cell>{{lancamento.valorFinal}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </md-table-container>
+
+    </md-card>
+  </md-content>
+</div>
